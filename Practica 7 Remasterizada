@@ -1,0 +1,29 @@
+create procedure Tel
+@Id_e int
+as
+select Telefono from Empleados where Id_Empleado = @Id_e
+exec Tel 6
+
+alter procedure Fech_N
+@Id_f int
+as
+select Fech_Nac from Empleados where Id_Empleado = @Id_f
+exec Fech_N 6
+
+create procedure sexo
+@Id_s int
+as
+select sexo from Empleados where Id_Empleado = @Id_s
+exec sexo 6  
+
+create procedure Descripcion
+@Id_d int
+as 
+select Descripcion from Puesto where Id_Puesto = @Id_d
+exec Descripcion 1
+
+create procedure Name
+@Se varchar(2)
+as
+select Nombre from Empleados where sexo = @Se
+exec Name 'M'
