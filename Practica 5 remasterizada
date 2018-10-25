@@ -1,0 +1,36 @@
+select Nombre, Stock as Existente from Producto
+select Id_Empleado as ID, Nombre + Apellidos as NombreCompleto from Empleados
+select Nombre + ' ' + Apellidos as NombreCompleto, Correo as Email from Empleados
+select Nombre + ' ' + Apellidos as NombreCompleto, sexo as Genero from Empleados
+select Apellidos + ' ' + Nombre as ApellidoNombre from Empleados
+
+select Nombre from Empleados where sexo = 'M'
+select sexo from Empleados where Nombre = 'Ivan'
+select Fech_Nac from Empleados where Apellidos = 'Blanco'
+select Telefono from Empleados where Id_Empleado = 9
+select Descripcion from Puesto where Id_Puesto = 1
+
+select avg(Precio_Venta) as Venta from Producto
+select sum(Precio_Venta) as Sum_venta from Producto 
+select count(Nombre) as ConteoNombre from Producto where Nombre like 'Viaje Cancun'  group by Id_Producto
+select max(Precio_Venta) as minimoId, Nombre from Producto group by Nombre having min(Precio_Venta) > 500
+select min(Precio_Venta) as minimoId, Nombre from Producto group by Nombre having max(Precio_Venta) > 1000
+
+SELECT a.Id_Categoria, a.Descripcion 
+FROM Categorias a
+INNER JOIN Producto b ON a.Id_Categoria = b.Id_Categoria
+
+SELECT a.Id_Puesto, a.Nombre
+FROM Empleados a
+LEFT JOIN Puesto b ON a.Id_Puesto = b.Id_Puesto
+
+SELECT a.Id_Puesto, a.Nombre
+FROM Empleados a
+RIGHT JOIN Puesto b ON a.Id_Puesto = b.Id_Puesto
+
+select avg(Precio_Venta) as ConteoVenta, p.Nombre
+ from Producto p inner join Categorias c on c.Id_Categoria = p.Id_Categoria group by Nombre
+
+ SELECT count(a.Id_Puesto) as MaximoPorPuesto, a.Nombre
+FROM Empleados a
+LEFT JOIN Puesto b ON a.Id_Puesto = b.Id_Puesto group by Nombre
