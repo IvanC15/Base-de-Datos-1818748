@@ -1,0 +1,45 @@
+select * from Producto where Id_Categoria in 
+( select Id_Categoria from Categorias where Id_Categoria > 2)
+
+select * from Empleados where Id_Puesto in 
+( select Id_Puesto from Puesto where Id_Puesto < 10 )
+
+
+
+create view Menor_10
+as
+select * from Empleados where Id_Puesto < 10
+select * from Menor_10
+ 
+ create view Existente 
+ as
+ select Nombre, Stock from Producto
+ select * from Existente
+
+ create view Id_Empleado
+ as
+ select Id_Empleado as ID, Nombre + Apellidos as Nombre_Completo from Empleados
+ select * from Id_Empleado
+
+ create view Nacimiento_Blanco
+ as
+ select Fech_Nac from Empleados where Apellidos = 'Blanco'
+ select * from Nacimiento_Blanco
+
+ create view Telfono_ID9
+ as
+ select Telefono from Empleados where Id_Empleado = 9
+ select * from Telfono_ID9
+
+ Alter view Telfono_ID9
+ as
+ select Nombre, Telefono from Empleados where Id_Empleado = 9
+ select * from Telfono_ID9
+
+declare @id int
+set @id = 3
+select Nombre, Telefono from Empleados where Id_Empleado = @id
+
+declare @id_em int
+set @id_em = 9
+select Telefono from Empleados where Id_Empleado = @id_em
