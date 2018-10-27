@@ -1,0 +1,39 @@
+CREATE TABLE Empleados (
+Id_Empleado int NOT NULL,
+Id_Puesto int NOT NULL,
+Nombre varchar(50) NOT NULL,
+Apellidos varchar(50) NOT NULL,
+Sexo varchar(15) NOT NULL,
+Fech_Nac date NOT NULL,
+Correo varchar(50) NOT NULL DEFAULT 'N/A',
+Telefono varchar(15) NOT NULL DEFAULT 'N/A',
+CONSTRAINT PK_Empleados_IdEmpleado PRIMARY KEY CLUSTERED (Id_Empleado)
+)
+
+CREATE TABLE Puesto (
+Id_Puesto int NOT NULL,
+Descripcion varchar(50) NOT NULL,
+CONSTRAINT PK_Puesto_IdPuesto PRIMARY KEY CLUSTERED (Id_Puesto)
+)
+
+CREATE TABLE Categorias (
+Id_Categoria int NOT NULL,
+Descripcion varchar(30) NOT NULL, --Servicio, Suministro, Consumible, etc.
+CONSTRAINT PK_Categorias_IdCategoria PRIMARY KEY CLUSTERED (Id_Categoria)
+)
+
+CREATE TABLE Producto (
+Id_Producto int NOT NULL,
+Id_Categoria int NOT NULL,
+Nombre varchar(30) NOT NULL,
+Stock int NOT NULL,
+Precio_Compra money NULL,
+Precio_Venta money NOT NULL,
+CONSTRAINT PK_Producto_IdProducto PRIMARY KEY CLUSTERED (Id_Producto)
+)
+
+CREATE TABLE Tipo_Pasajero (
+Id_Tipo tinyint NOT NULL,
+Tipo varchar(40) NOT NULL DEFAULT 'Adulto', --Bebe, Niño, Adulto y Adulto mayor
+CONSTRAINT PK_TipoPasajero_IdTipo PRIMARY KEY CLUSTERED (Id_Tipo)
+)
