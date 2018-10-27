@@ -1,0 +1,24 @@
+create trigger Producto_Categoria
+on Categorias
+for insert as
+begin 
+SELECT a.Id_Categoria, a.Descripcion 
+FROM Categorias a
+INNER JOIN Producto b ON a.Id_Categoria = b.Id_Categoria
+end
+
+create trigger Existencia_Producto
+on Producto
+after update as
+begin 
+select * from Existente
+end
+
+create trigger Puesto_Existente
+on Empleados
+after delete as
+begin 
+SELECT a.Id_Puesto, a.Nombre
+FROM Empleados a
+LEFT JOIN Puesto b ON a.Id_Puesto = b.Id_Puesto
+end
